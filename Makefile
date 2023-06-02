@@ -6,19 +6,27 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 07:57:57 by m_kamal           #+#    #+#              #
-#    Updated: 2023/06/01 08:49:27 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/06/02 09:01:05 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pushswap
 
-SRCS = ./sources/main.c ./sources/utils.c ./sources/input.c ./sources/input_utils.c ./sources/init.c ./sources/errors.c
+SRCS =	./sources/main.c\
+		./sources/utils.c\
+		./sources/utils2.c\
+		./sources/input.c\
+		./sources/input_utils.c\
+		./sources/init.c\
+		./sources/errors.c\
+		./sources/parse.c\
+		./sources/moves.c\
 
 OFILES = $(SRCS:.c=.o)
 
 CC = gcc -O3 -g
 
-CFLAGS = #-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 RM = rm -f
 

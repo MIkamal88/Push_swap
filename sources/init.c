@@ -6,11 +6,9 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:44:34 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/01 08:45:37 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/02 08:52:58 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// !Fix get numbers function!
 
 #include "../includes/pushswap.h"
 
@@ -68,7 +66,7 @@ t_stack	*fill_stack(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		num = ft_atoi(argv[i]);
+		num = get_numbers(argc, argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			err_hndl("Error");
 		if (i == 1)

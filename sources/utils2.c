@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:27:09 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/02 09:06:34 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/02 20:56:10 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr(char *s)
 {
 	if (s != 0)
-		write(fd, s, ft_strlen(s));
+		write(1, s, ft_strlen(s));
 }
 
 int	ft_atoi(const char *str)

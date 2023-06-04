@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:44:34 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/02 08:52:58 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/04 08:42:19 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,20 @@ static t_stack	*new_node(int num)
 	return (new);
 }
 
+/* find_second_last:
+*	Returns the second to last node of the stack.
+*/
+t_stack	*find_second_last(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
 /*	find_bottom:
 	Returns last node in the stack
 */
-static t_stack	*find_bottom(t_stack *stack)
+t_stack	*find_bottom(t_stack *stack)
 {
 	while (stack && stack->next != NULL)
 		stack = stack->next;

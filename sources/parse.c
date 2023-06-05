@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:50:42 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/02 08:42:31 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/05 22:19:23 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*merge_data(int argc, char **argv)
 	merged = ft_strdup("");
 	while (i < argc)
 	{
-		merged = ft_strjoin(merged, argv[i]);
+		merged = modded_strjoin(merged, argv[i]);
 		i++;
 	}
 	return (merged);
@@ -65,7 +65,7 @@ int	*get_numbers(int argc, char **argv)
 	merged_data = merge_data(argc, argv);
 	data_len = count_x(merged_data, ' ');
 	data = ft_split(merged_data, ' ');
-	arr = malloc(sizeof(int) * data_len);
+	arr = malloc(sizeof(int) * data_len + 1);
 	i = 0;
 	while (i < data_len)
 	{

@@ -6,13 +6,13 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:27:09 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/02 20:56:10 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/05 15:20:16 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-static size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -53,7 +53,7 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-static char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
@@ -66,7 +66,7 @@ static char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*modded_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	k;

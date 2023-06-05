@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:24:06 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/01 11:53:20 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/05 18:11:01 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ static int	arg_is_duplicate(char **argv)
 	int	j;
 
 	i = 1;
-	j = 1;
 	while (argv[i])
 	{
+		j = 1;
 		while (argv[j])
 		{
-			if (i != j && ft_strcmp(argv[i], argv[j]) == 0)
+			if (j != i && ft_strcmp(argv[i], argv[j]) == 0)
 				return (1);
 			j++;
 		}
 		i++;
-		return (0);
 	}
+	return (0);
 }
 
 /*	correct input:

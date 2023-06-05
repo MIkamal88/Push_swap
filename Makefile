@@ -6,7 +6,7 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 07:57:57 by m_kamal           #+#    #+#              #
-#    Updated: 2023/06/02 09:01:05 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/06/05 13:23:21 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,14 @@ SRCS =	./sources/main.c\
 		./sources/init.c\
 		./sources/errors.c\
 		./sources/parse.c\
-		./sources/moves.c\
+		./sources/swap.c\
+		./sources/rotate.c\
+		./sources/rev_rotate.c\
+		./sources/push.c\
 
 OFILES = $(SRCS:.c=.o)
 
-CC = gcc -O3 -g
+CC = gcc -g
 
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
@@ -45,6 +48,8 @@ clean:
 fclean: clean
 	@echo "\033[31mRemoving PushSwap"
 	@$(RM) $(NAME)
+
+re: fclean all
 
 .SILENT: $(NAME) $(OFILES)
 

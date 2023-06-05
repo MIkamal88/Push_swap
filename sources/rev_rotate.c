@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 08:13:14 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/04 08:45:29 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/05 13:14:00 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	rev_rotate(t_stack **stack)
 	tmp = *stack;
 	*stack = last;
 	(*stack)->next = tmp;
-	second_last = NULL;
+	second_last->next = NULL;
 }
 
 /*	do_rra:

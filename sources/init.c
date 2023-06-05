@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:44:34 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/04 08:42:19 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/05 22:16:24 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,19 @@ t_stack	*fill_stack(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	int		i;
-	int		num;
+	int		*num;
 
 	stack_a = NULL;
-	i = 1;
-	while (i < argc)
+	num = get_numbers(argc, argv);
+	i = 0;
+	while (num[i])
 	{
-		num = get_numbers(argc, argv[i]);
-		if (num > INT_MAX || num < INT_MIN)
+		if (num[i] > INT_MAX || num[i] < INT_MIN)
 			err_hndl("Error");
-		if (i == 1)
-			stack_a = new_node(num);
+		if (i == 0)
+			stack_a = new_node(num[i]);
 		else
-			attach_node_to_tail(&stack_a, new_node(num));
+			attach_node_to_tail(&stack_a, new_node(num[i]));
 		i++;
 	}
 	return (stack_a);

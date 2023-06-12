@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:50:42 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/05 22:19:23 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/06 19:25:36 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,28 @@ static int	count_x(char const *str, char c)
 	return (count);
 }
 
-/*	get_numbers:
+/*	Parse_data:
 	Splits the numbers, performs atoi
 	Feed into an array and frees
 */
-int	*get_numbers(int argc, char **argv)
+t_data	*parse_data(int argc, char **argv)
 {
-	char	**data;
-	char	*merged_data;
-	int		*arr;
-	int		data_len;
+	t_data	*data;
+	char	**parsed_data;
 	int		i;
 
-	merged_data = merge_data(argc, argv);
-	data_len = count_x(merged_data, ' ');
-	data = ft_split(merged_data, ' ');
-	arr = malloc(sizeof(int) * data_len + 1);
+	data = malloc(sizeof(t_data));
+	data->merged_data = merge_data(argc, argv);
+	data->data_len = count_x(data->merged_data, ' ');
+	parsed_data = ft_split(data->merged_data, ' ');
+	data->arr = malloc(sizeof(int) * data->data_len + 1);
 	i = 0;
-	while (i < data_len)
+	while (i < data->data_len)
 	{
-		arr[i] = ft_atoi(data[i]);
-		free(data[i]);
+		data->arr[i] = ft_atoi(parsed_data[i]);
+		free(parsed_data[i]);
 		i++;
 	}
-	free(data);
-	free(merged_data);
-	return (arr);
+	free(parsed_data);
+	return (data);
 }

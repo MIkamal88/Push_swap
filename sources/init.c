@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:44:34 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/05 22:16:24 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/06 19:29:11 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ static void	attach_node_to_tail(t_stack **stack, t_stack *node)
 	Return: if values are out of INT_MAX/MIN it returns error
 	and exits the program.
 */
-t_stack	*fill_stack(int argc, char **argv)
+t_stack	*fill_stack(t_pushswap *ps)
 {
 	t_stack	*stack_a;
 	int		i;
 	int		*num;
 
 	stack_a = NULL;
-	num = get_numbers(argc, argv);
+	num = ps->data->arr;
 	i = 0;
 	while (num[i])
 	{
@@ -82,7 +82,10 @@ t_stack	*fill_stack(int argc, char **argv)
 		if (i == 0)
 			stack_a = new_node(num[i]);
 		else
+		{
 			attach_node_to_tail(&stack_a, new_node(num[i]));
+			stack_a->index = i;
+		}
 		i++;
 	}
 	return (stack_a);

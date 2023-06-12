@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:02:07 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/05 15:20:43 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/06/06 19:29:31 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_data
+{
+	char	*merged_data;
+	int		*arr;
+	int		data_len;
+}	t_data;
+
+typedef struct s_pushswap
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_data	*data;
+	int		size;
+}	t_pushswap;
+
 //	Libft
 int		ft_isdigit(char c);
 int		ft_is_sign(char c);
@@ -44,7 +59,7 @@ void	ft_putstr(char *s);
 int		correct_input(char **argv);
 
 //	Fixing numbers list
-int		*get_numbers(int argc, char **argv);
+t_data	*parse_data(int argc, char **argv);
 
 //	Moves
 //		Push
@@ -66,7 +81,7 @@ void	do_rrr(t_stack **stack_a, t_stack **stack_b);
 //	Filling stack
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);
-t_stack	*fill_stack(int argc, char **argv);
+t_stack	*fill_stack(t_pushswap *ps);
 void	err_hndl(char *err);
 
 #endif

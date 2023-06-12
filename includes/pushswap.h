@@ -86,4 +86,3 @@ void	err_hndl(char *err);
 
 #endif
 
-//Handling INT_MAX and INT_MIN?

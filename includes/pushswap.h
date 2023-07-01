@@ -78,6 +78,10 @@ void	do_rra(t_stack **stack_a);
 void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
 
+//    sort
+int is_sorted(t_stack *stack);
+void sort_3(t_stack **stack_a);
+
 //	Filling stack
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);

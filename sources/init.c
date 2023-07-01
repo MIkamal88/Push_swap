@@ -15,7 +15,7 @@
 /*	new_node:
 	Mallocs and returns the first stack
 */
-static t_stack	*new_node(int num)
+static t_stack	*new_node(int num, int index)
 {
 	t_stack	*new;
 
@@ -23,7 +23,7 @@ static t_stack	*new_node(int num)
 	if (!new)
 		return (NULL);
 	new->value = num;
-	new->index = 0;
+	new->index = index;
 	new->next = NULL;
 	return (new);
 }
@@ -69,7 +69,7 @@ static void	attach_node_to_tail(t_stack **stack, t_stack *node)
 t_stack	*fill_stack(t_pushswap *ps)
 {
 	t_stack	*stack_a;
-	int		i;
+  int		i;
 	int		*num;
 
 	stack_a = NULL;
@@ -79,13 +79,10 @@ t_stack	*fill_stack(t_pushswap *ps)
 	{
 		if (num[i] > INT_MAX || num[i] < INT_MIN)
 			err_hndl("Error");
-		if (i == 0)
-			stack_a = new_node(num[i]);
-		else
-		{
-			attach_node_to_tail(&stack_a, new_node(num[i]));
-			stack_a->index = i;
-		}
+    if (i == 0)
+			stack_a = new_node(num[i], ps->data->data_len - i);
+    else
+			attach_node_to_tail(&stack_a, new_node(num[i], ps->data->data_len - i));
 		i++;
 	}
 	return (stack_a);

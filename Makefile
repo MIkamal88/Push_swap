@@ -24,12 +24,13 @@ SRCS =	./sources/main.c\
 		./sources/rotate.c\
 		./sources/rev_rotate.c\
 		./sources/push.c\
+		./sources/sort.c\
 
 OFILES = $(SRCS:.c=.o)
 
 CC = gcc -g
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 RM = rm -f
 

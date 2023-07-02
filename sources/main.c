@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (!correct_input(argv))
-		err_hndl("Error");
+		err_hndl("Error", ps);
 	ps = init_pushswap(argc, argv);
 	push_swap(&ps->stack_a, &ps->stack_b, ps->size);
   while (ps->stack_a->next)

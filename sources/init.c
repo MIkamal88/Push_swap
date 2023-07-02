@@ -78,7 +78,7 @@ t_stack	*fill_stack(t_pushswap *ps)
 	while (num[i])
 	{
 		if (num[i] > INT_MAX || num[i] < INT_MIN)
-			err_hndl("Error");
+			err_hndl("Error", ps);
     if (i == 0)
 			stack_a = new_node(num[i], ps->data->data_len - i);
     else

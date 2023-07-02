@@ -86,7 +86,7 @@ void sort_3(t_stack **stack_a);
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);
 t_stack	*fill_stack(t_pushswap *ps);
-void	err_hndl(char *err);
+void	err_hndl(char *err, t_pushswap *ps);
 
 #endif
 

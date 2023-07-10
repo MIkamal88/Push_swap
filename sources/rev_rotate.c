@@ -12,6 +12,17 @@
 
 #include "../includes/pushswap.h"
 
+
+/* find_second_last:
+*	Returns the second to last node of the stack.
+*/
+t_stack	*find_second_last(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
 /*	rev_rotate:
 	Brings the bottom node of a stack to the top.
 */

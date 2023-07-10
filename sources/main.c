@@ -31,14 +31,14 @@ int is_sorted(t_stack *stack)
  * Chooses sorting method depending on number
  * of values to be sorted.
  */
-static void push_swap(t_stack **stack_a, t_stack **stack_b, int size)
+static void push_swap(t_pushswap *ps)
 {
-  if (size == 2 && !is_sorted(*stack_a))
-    do_sa(stack_a);
-  else if (size == 3)
-    sort_3(stack_a);
-//  else if (size > 3 && !is_sorted(*stack_a))
-//    sort(stack_a, stack_b);
+  if (ps->size == 2 && !is_sorted(ps->stack_a))
+    do_sa(&ps->stack_a);
+  else if (ps->size == 3 && !is_sorted(ps->stack_a))
+    sort_3(ps);
+  else if (ps->size > 3 && !is_sorted(ps->stack_a))
+    sort(ps);
 }
 
 /* init_pushswap:
@@ -66,12 +66,21 @@ int	main(int argc, char **argv)
 	if (!correct_input(argv))
 		err_hndl("Error", ps);
 	ps = init_pushswap(argc, argv);
-	push_swap(&ps->stack_a, &ps->stack_b, ps->size);
+	assign_index(ps->stack_a, ps->size + 1);
+  push_swap(ps);
+  printf("Stack A: \n");
   while (ps->stack_a->next)
   {
     printf("Value = %d Index = %d\n", ps->stack_a->value, ps->stack_a->index);
     ps->stack_a = ps->stack_a->next;  
   }
   printf("Value = %d Index = %d\n", ps->stack_a->value, ps->stack_a->index); 
-  //free_stacks
+  printf("Stack B: \n");
+  while (ps->stack_b->next)
+  {
+    printf("Value = %d Index = %d\n", ps->stack_b->value, ps->stack_b->index);
+    ps->stack_b = ps->stack_b->next;
+  }
+  printf("Value = %d Index = %d\n", ps->stack_b->value, ps->stack_b->index);
+  free_all(ps);
 }

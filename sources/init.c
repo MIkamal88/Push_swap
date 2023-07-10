@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include <limits.h>
 
 /*	new_node:
 	Mallocs and returns the first stack
@@ -26,16 +27,6 @@ static t_stack	*new_node(int num, int index)
 	new->index = index;
 	new->next = NULL;
 	return (new);
-}
-
-/* find_second_last:
-*	Returns the second to last node of the stack.
-*/
-t_stack	*find_second_last(t_stack *stack)
-{
-	while (stack && stack->next && stack->next->next != NULL)
-		stack = stack->next;
-	return (stack);
 }
 
 /*	find_bottom:
@@ -61,6 +52,39 @@ static void	attach_node_to_tail(t_stack **stack, t_stack *node)
 	tail->next = node;
 }
 
+/* assign_index:
+ * Assigns an index to a node in order to use those indexes to arrange the stacks
+ * Indexing is done from highest to lowest.
+*/
+void  assign_index(t_stack *stack_a, int size)
+{
+  t_stack *ptr;
+  t_stack *highest;
+  int value;
+
+  while (--size)
+  {
+    ptr = stack_a;
+    value = INT_MIN;
+    highest = NULL;
+    while (ptr)
+    {
+      if (ptr->value == INT_MIN && ptr->index == 0)
+        ptr->index = 1;
+      if (ptr->value > value && ptr->index == 0)
+      {
+        value = ptr->value;
+        highest = ptr;
+        ptr = stack_a;
+      }
+      else
+        ptr = ptr->next;
+    }
+    if (highest != NULL)
+      highest->index = size;
+  }
+}
+
 /*	fill_stack:
 	Fills stack_a with values
 	Return: if values are out of INT_MAX/MIN it returns error
@@ -80,9 +104,9 @@ t_stack	*fill_stack(t_pushswap *ps)
 		if (num[i] > INT_MAX || num[i] < INT_MIN)
 			err_hndl("Error", ps);
     if (i == 0)
-			stack_a = new_node(num[i], ps->data->data_len - i);
+			stack_a = new_node(num[i], 0);
     else
-			attach_node_to_tail(&stack_a, new_node(num[i], ps->data->data_len - i));
+			attach_node_to_tail(&stack_a, new_node(num[i], 0));
 		i++;
 	}
 	return (stack_a);

@@ -79,14 +79,17 @@ void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
 
 //    sort
-int is_sorted(t_stack *stack);
-void sort_3(t_stack **stack_a);
+int   is_sorted(t_stack *stack);
+void  sort_3(t_pushswap *ps);
+void  sort(t_pushswap *ps);
 
 //	Filling stack
+void    assign_index(t_stack *stack_a, int size);
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);
 t_stack	*fill_stack(t_pushswap *ps);
-void	err_hndl(char *err, t_pushswap *ps);
+void    err_hndl(char *err, t_pushswap *ps);
+void    free_all(t_pushswap *ps);
 
 #endif
 

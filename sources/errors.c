@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:22:42 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/05/30 11:22:56 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/05 14:38:53 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ static void free_stack(t_stack **stack)
     *stack = temp;
   }
   *stack = NULL;
+}
+
+void  free_all(t_pushswap *ps)
+{
+  free_data(ps->data);
+  free_stack(&ps->stack_a);
+  free_stack(&ps->stack_b);
+  free(ps);
 }
 
 void	err_hndl(char *err, t_pushswap *ps)

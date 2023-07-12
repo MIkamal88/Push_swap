@@ -18,13 +18,17 @@
 */
 static void	swap_nodes(t_stack **stack)
 {
-	int	tmp;
+	int	tmp_v;
+  int tmp_i;
 
 	if (!(*stack) || !((*stack)->next))
 		return ;
-	tmp = (*stack)->value;
+	tmp_v = (*stack)->value;
+  tmp_i = (*stack)->index;
 	(*stack)->value = (*stack)->next->value;
-	(*stack)->next->value = tmp;
+	(*stack)->index = (*stack)->next->index;
+	(*stack)->next->value = tmp_v;
+	(*stack)->next->index = tmp_i;
 }
 
 /*	do_sa:	Swaps the top 2 nodes of stack a

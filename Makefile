@@ -30,7 +30,7 @@ OFILES = $(SRCS:.c=.o)
 
 CC = gcc -g
 
-#CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 

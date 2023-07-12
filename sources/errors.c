@@ -6,11 +6,12 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:22:42 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/07/05 14:38:53 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/12 13:42:08 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include <stdlib.h>
 
 static void free_data(t_data *data)
 {
@@ -42,11 +43,17 @@ void  free_all(t_pushswap *ps)
   free(ps);
 }
 
+void  exit_err(char *err)
+{
+  perror(err);
+  exit(EXIT_FAILURE);
+}
+
 void	err_hndl(char *err, t_pushswap *ps)
 {
-  if (ps->stack_a == NULL || ps->stack_a != NULL)
+  if (ps->stack_a != NULL)
     free_stack(&ps->stack_a);
-  if (ps->stack_b == NULL || ps->stack_b != NULL)
+  if (ps->stack_b != NULL)
     free_stack(&ps->stack_b);
 	perror(err);
 	exit(EXIT_FAILURE);

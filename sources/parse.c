@@ -64,7 +64,7 @@ t_data	*parse_data(int argc, char **argv)
 	data->merged_data = merge_data(argc, argv);
 	data->data_len = count_x(data->merged_data, ' ');
 	parsed_data = ft_split(data->merged_data, ' ');
-	data->arr = malloc(sizeof(int) * data->data_len + 1);
+	data->arr = malloc(sizeof(int) * (data->data_len));
 	i = 0;
 	while (i < data->data_len)
 	{

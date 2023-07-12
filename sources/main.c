@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+#include <stdio.h>
 
 /* is_sorted:
  * Checks if the stack is sorted.
@@ -37,8 +38,11 @@ static void push_swap(t_pushswap *ps)
     do_sa(&ps->stack_a);
   else if (ps->size == 3 && !is_sorted(ps->stack_a))
     sort_3(ps);
-  else if (ps->size > 3 && !is_sorted(ps->stack_a))
-    sort(ps);
+  else if (ps->size == 5 && !is_sorted(ps->stack_a))
+    sort_5(ps);
+  else
+    if (!is_sorted(ps->stack_a))
+      sort(ps);
 }
 
 /* init_pushswap:
@@ -51,9 +55,9 @@ static t_pushswap	*init_pushswap(int argc, char **argv)
 
 	pushswap = malloc(sizeof(t_pushswap));
 	pushswap->data = parse_data(argc, argv);
+	pushswap->size = pushswap->data->data_len;
 	pushswap->stack_a = fill_stack(pushswap);
 	pushswap->stack_b = NULL;
-	pushswap->size = pushswap->data->data_len;
 	return (pushswap);
 }
 
@@ -64,7 +68,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (!correct_input(argv))
-		err_hndl("Error", ps);
+    exit_err("Error");
 	ps = init_pushswap(argc, argv);
 	assign_index(ps->stack_a, ps->size + 1);
   push_swap(ps);
@@ -74,8 +78,7 @@ int	main(int argc, char **argv)
     printf("Value = %d Index = %d\n", ps->stack_a->value, ps->stack_a->index);
     ps->stack_a = ps->stack_a->next;  
   }
-  printf("Value = %d Index = %d\n", ps->stack_a->value, ps->stack_a->index); 
-  printf("Stack B: \n");
+  printf("Value = %d Index = %d\n", ps->stack_a->value, ps->stack_a->index);printf("Stack B: \n");
   while (ps->stack_b->next)
   {
     printf("Value = %d Index = %d\n", ps->stack_b->value, ps->stack_b->index);

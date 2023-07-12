@@ -47,30 +47,70 @@ void sort_3(t_pushswap *ps)
     do_sa(&ps->stack_a);
 }
 
+static void push_away(t_pushswap *ps)
+{
+	int	pushed;
+	int	i;
+
+	pushed = 0;
+	i = 0;
+	while (ps->size > 3 && i < ps->size && pushed < ps->size / 2)
+	{
+		if (ps->stack_a->index <= ps->size / 2)
+		{
+			do_pb(&ps->stack_a, &ps->stack_b);
+			pushed++;
+		}
+		else
+			do_ra(&ps->stack_a);
+		i++;
+	}
+	while (ps->size - pushed > 3)
+	{
+		do_pb(&ps->stack_a, &ps->stack_b);
+		pushed++;
+	}
+}
+
+/* sort_5:
+ * Sorts a stack of 5 numbers
+ */
+void sort_5(t_pushswap*ps)
+{
+  push_away(ps);
+  sort_3(ps);
+  do_pa(&ps->stack_a, &ps->stack_b);
+  do_pa(&ps->stack_a, &ps->stack_b);
+  if (ps->stack_a->index > ps->stack_a->next->index)
+    do_sa(&ps->stack_a);
+}
+
+/*sort:
+ * Sorts the stacks using radix sorting algorithm.
+ */
 void sort(t_pushswap *ps)
 {
-  int highest;
-  int pushed;
+  int i;
+  int j;
+  int num;
+  int max_bits;
 
-  pushed = 0;
-  if (is_sorted(ps->stack_a))
-    return ;
-  while (ps->size - pushed != 3)
+  max_bits = 0;
+  while (((ps->size - 1) >> max_bits) != 0)
+    max_bits++;
+  i = -1;
+  while (++i < max_bits)
   {
-    if ((ps->stack_a)->index <= ps->size)
+    j = -1;
+    while (++j < ps->size)
     {
-      do_pb(&ps->stack_a, &ps->stack_b);
-      pushed++;
+      num = ps->stack_a->index;
+      if ((num >> i) & 1)
+        do_ra(&ps->stack_a);
+      else
+        do_pb(&ps->stack_a, &ps->stack_b);
     }
-    else
-      do_ra(&ps->stack_a);
-  }
-  sort_3(ps);
-  while (ps->stack_b)
-  {
-    do_pa(&ps->stack_a, &ps->stack_b);
-    highest = highest_index(ps->stack_a);
-    if (ps->stack_a->index == highest)
-      do_ra(&ps->stack_a);
+    while (ps->stack_b)
+      do_pa(&ps->stack_a, &ps->stack_b);
   }
 }

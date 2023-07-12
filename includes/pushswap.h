@@ -13,18 +13,16 @@
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-// # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdint.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
 # include <limits.h>
 
 typedef struct s_stack
 {
 	int				value;
-	int				index;
+  int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -79,8 +77,10 @@ void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
 
 //    sort
+void  assign_position(t_stack **stack);
 int   is_sorted(t_stack *stack);
 void  sort_3(t_pushswap *ps);
+void  sort_5(t_pushswap *ps);
 void  sort(t_pushswap *ps);
 
 //	Filling stack
@@ -88,6 +88,7 @@ void    assign_index(t_stack *stack_a, int size);
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);
 t_stack	*fill_stack(t_pushswap *ps);
+void    exit_err(char *err);
 void    err_hndl(char *err, t_pushswap *ps);
 void    free_all(t_pushswap *ps);
 

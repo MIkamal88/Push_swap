@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-#include <limits.h>
 
 /*	new_node:
-	Mallocs and returns the first stack
-*/
+ *	Mallocs and returns the first stack
+ */
 static t_stack	*new_node(int num, int index)
 {
 	t_stack	*new;
@@ -30,8 +29,8 @@ static t_stack	*new_node(int num, int index)
 }
 
 /*	find_bottom:
-	Returns last node in the stack
-*/
+ *	Returns last node in the stack
+ */
 t_stack	*find_bottom(t_stack *stack)
 {
 	while (stack && stack->next != NULL)
@@ -40,8 +39,8 @@ t_stack	*find_bottom(t_stack *stack)
 }
 
 /*	Attach_node_to_tail:
-	Adds a node to the tail end of the stack
-*/
+ *	Adds a node to the tail end of the stack
+ */
 static void	attach_node_to_tail(t_stack **stack, t_stack *node)
 {
 	t_stack	*tail;
@@ -55,14 +54,14 @@ static void	attach_node_to_tail(t_stack **stack, t_stack *node)
 /* assign_index:
  * Assigns an index to a node in order to use those indexes to arrange the stacks
  * Indexing is done from highest to lowest.
-*/
+ */
 void  assign_index(t_stack *stack_a, int size)
 {
   t_stack *ptr;
   t_stack *highest;
   int value;
 
-  while (--size)
+  while (--size > 0)
   {
     ptr = stack_a;
     value = INT_MIN;
@@ -99,7 +98,7 @@ t_stack	*fill_stack(t_pushswap *ps)
 	stack_a = NULL;
 	num = ps->data->arr;
 	i = 0;
-	while (num[i])
+	while (i < ps->size)
 	{
 		if (num[i] > INT_MAX || num[i] < INT_MIN)
 			err_hndl("Error", ps);

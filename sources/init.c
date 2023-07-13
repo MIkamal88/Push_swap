@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:44:34 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/06 19:29:11 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:09:48 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,33 @@ static void	attach_node_to_tail(t_stack **stack, t_stack *node)
  * Assigns an index to a node in order to use those indexes to arrange the stacks
  * Indexing is done from highest to lowest.
  */
-void  assign_index(t_stack *stack_a, int size)
+void	assign_index(t_stack *stack_a, int size)
 {
-  t_stack *ptr;
-  t_stack *highest;
-  int value;
+	t_stack	*ptr;
+	t_stack	*highest;
+	int		value;
 
-  while (--size > 0)
-  {
-    ptr = stack_a;
-    value = INT_MIN;
-    highest = NULL;
-    while (ptr)
-    {
-      if (ptr->value == INT_MIN && ptr->index == 0)
-        ptr->index = 1;
-      if (ptr->value > value && ptr->index == 0)
-      {
-        value = ptr->value;
-        highest = ptr;
-        ptr = stack_a;
-      }
-      else
-        ptr = ptr->next;
-    }
-    if (highest != NULL)
-      highest->index = size;
-  }
+	while (--size > 0)
+	{
+		ptr = stack_a;
+		value = INT_MIN;
+		highest = NULL;
+		while (ptr)
+		{
+			if (ptr->value == INT_MIN && ptr->index == 0)
+			ptr->index = 1;
+			if (ptr->value > value && ptr->index == 0)
+			{
+				value = ptr->value;
+				highest = ptr;
+				ptr = stack_a;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (highest != NULL)
+			highest->index = size;
+	}
 }
 
 /*	fill_stack:
@@ -92,7 +92,7 @@ void  assign_index(t_stack *stack_a, int size)
 t_stack	*fill_stack(t_pushswap *ps)
 {
 	t_stack	*stack_a;
-  int		i;
+	int		i;
 	int		*num;
 
 	stack_a = NULL;
@@ -101,10 +101,10 @@ t_stack	*fill_stack(t_pushswap *ps)
 	while (i < ps->size)
 	{
 		if (num[i] > INT_MAX || num[i] < INT_MIN)
-			err_hndl("Error", ps);
-    if (i == 0)
+			err_hndl("Error\n", ps);
+		if (i == 0)
 			stack_a = new_node(num[i], 0);
-    else
+		else
 			attach_node_to_tail(&stack_a, new_node(num[i], 0));
 		i++;
 	}

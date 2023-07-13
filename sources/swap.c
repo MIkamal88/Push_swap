@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:00:30 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/05 12:28:08 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:12:58 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 static void	swap_nodes(t_stack **stack)
 {
 	int	tmp_v;
-  int tmp_i;
+	int	tmp_i;
 
 	if (!(*stack) || !((*stack)->next))
 		return ;
 	tmp_v = (*stack)->value;
-  tmp_i = (*stack)->index;
+	tmp_i = (*stack)->index;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->index = (*stack)->next->index;
 	(*stack)->next->value = tmp_v;

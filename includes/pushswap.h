@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:02:07 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/06 19:29:31 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:01:32 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct s_stack
 {
 	int				value;
-  int				index;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -77,20 +77,19 @@ void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
 
 //    sort
-void  assign_position(t_stack **stack);
-int   is_sorted(t_stack *stack);
-void  sort_3(t_pushswap *ps);
-void  sort_5(t_pushswap *ps);
-void  sort(t_pushswap *ps);
+int		is_sorted(t_stack *stack);
+void	sort_3(t_pushswap *ps);
+void	sort_5(t_pushswap *ps);
+void	sort(t_pushswap *ps);
 
 //	Filling stack
-void    assign_index(t_stack *stack_a, int size);
+void	assign_index(t_stack *stack_a, int size);
 t_stack	*find_second_last(t_stack *stack);
 t_stack	*find_bottom(t_stack *stack);
 t_stack	*fill_stack(t_pushswap *ps);
-void    exit_err(char *err);
-void    err_hndl(char *err, t_pushswap *ps);
-void    free_all(t_pushswap *ps);
+void	exit_err(char *err);
+void	err_hndl(char *err, t_pushswap *ps);
+void	free_all(t_pushswap *ps);
 
 #endif
 

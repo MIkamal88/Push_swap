@@ -6,11 +6,11 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 07:57:57 by m_kamal           #+#    #+#              #
-#    Updated: 2023/06/05 13:23:21 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/07/13 14:15:34 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap
+NAME = push_swap
 
 SRCS =	./sources/main.c\
 		./sources/utils.c\
@@ -30,7 +30,7 @@ OFILES = $(SRCS:.c=.o)
 
 CC = gcc -g
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -f
 

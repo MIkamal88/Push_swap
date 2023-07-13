@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:02:07 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/07/13 14:01:32 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:19:22 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,3 @@ void	err_hndl(char *err, t_pushswap *ps);
 void	free_all(t_pushswap *ps);
 
 #endif
-

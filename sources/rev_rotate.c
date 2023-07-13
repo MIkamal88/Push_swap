@@ -6,12 +6,11 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 08:13:14 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/06/05 13:14:00 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:19:36 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-
 
 /* find_second_last:
 *	Returns the second to last node of the stack.

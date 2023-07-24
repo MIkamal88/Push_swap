@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 11:14:01 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/07/13 14:08:33 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/07/24 14:38:41 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,14 @@ static t_pushswap	*init_pushswap(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_pushswap	*ps;
+	int			i;
 
+	i = 0;
 	if (argc < 2)
 		return (0);
+	while (argv[i++])
+		if (argv[i] == 0)
+			exit_err("Error\n");
 	if (!correct_input(argv))
 		exit_err("Error\n");
 	ps = init_pushswap(argc, argv);

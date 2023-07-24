@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
+#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 07:57:57 by m_kamal           #+#    #+#              #
-#    Updated: 2023/07/13 14:15:34 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/07/24 14:23:08 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS =	./sources/main.c\
 
 OFILES = $(SRCS:.c=.o)
 
-CC = gcc -g
+CC = gcc #-g
 
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 

@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	if (argc < 2)
 		return (0);
-	while (argv[i++])
+	while (argv[i++] && i != argc - 1)
 		if (argv[i] == 0)
 			exit_err("Error\n");
 	if (!correct_input(argv))

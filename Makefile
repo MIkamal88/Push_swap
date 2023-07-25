@@ -28,9 +28,9 @@ SRCS =	./sources/main.c\
 
 OFILES = $(SRCS:.c=.o)
 
-CC = gcc #-g
+CC = gcc -g
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 RM = rm -f
 

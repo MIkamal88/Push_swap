@@ -48,6 +48,10 @@ void	sort_3(t_pushswap *ps)
 		do_sa(&ps->stack_a);
 }
 
+/* push_away:
+ * Pushes all nodes in stack A to B except for the last 3 nodes
+ * Pushes the smaller values first, then larger ones to help with sorting
+*/
 static void	push_away(t_pushswap *ps)
 {
 	int	pushed;

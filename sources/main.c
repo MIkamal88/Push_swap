@@ -37,7 +37,7 @@ static void	push_swap(t_pushswap *ps)
 		do_sa(&ps->stack_a);
 	else if (ps->size == 3 && !is_sorted(ps->stack_a))
 		sort_3(ps);
-	else if (ps->size == 5 && !is_sorted(ps->stack_a))
+	else if ((ps->size == 4 || ps->size == 5) && !is_sorted(ps->stack_a))
 		sort_5(ps);
 	else
 		if (!is_sorted(ps->stack_a))

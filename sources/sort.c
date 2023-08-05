@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:14:26 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/07/13 14:17:24 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/08/03 21:04:51 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sort_3(t_pushswap *ps)
  * Pushes all nodes in stack A to B except for the last 3 nodes
  * Pushes the smaller values first, then larger ones to help with sorting
 */
-static void	push_away(t_pushswap *ps)
+static int	push_away(t_pushswap *ps)
 {
 	int	pushed;
 	int	i;
@@ -65,6 +65,7 @@ static void	push_away(t_pushswap *ps)
 		{
 			do_pb(&ps->stack_a, &ps->stack_b);
 			pushed++;
+			ps->size--;
 		}
 		else
 			do_ra(&ps->stack_a);
@@ -75,17 +76,22 @@ static void	push_away(t_pushswap *ps)
 		do_pb(&ps->stack_a, &ps->stack_b);
 		pushed++;
 	}
+	return (pushed);
 }
 
 /* sort_5:
- * Sorts a stack of 5 numbers
+   * Sorts a stack of 4 or 5 numbers
  */
 void	sort_5(t_pushswap*ps)
 {
-	push_away(ps);
+	int	i;
+	int	pushed;
+
+	i = 0;
+	pushed = push_away(ps);
 	sort_3(ps);
-	do_pa(&ps->stack_a, &ps->stack_b);
-	do_pa(&ps->stack_a, &ps->stack_b);
+	while (i++ < pushed)
+		do_pa(&ps->stack_a, &ps->stack_b);
 	if (ps->stack_a->index > ps->stack_a->next->index)
 		do_sa(&ps->stack_a);
 }

@@ -69,11 +69,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	while (argv[i])
-	{
-		if (argv[i][0] == '\0')
+		if (argv[i++][0] == '\0')
 			exit_err("Error\n");
-		i++;
-	}
 	if (!correct_input(argv))
 		exit_err("Error\n");
 	ps = init_pushswap(argc, argv);

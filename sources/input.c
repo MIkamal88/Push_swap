@@ -31,7 +31,7 @@ static int	arg_is_number(char *argv)
 }
 
 /*	arg_is_zero:
-	Checks if the argument is 0 to avoid snide cases of +0, -0, 000
+	Checks if the argument is NULL or 0 to avoid snide cases of +0, -0, 000
 	and duplicates of 0 too.
 	Returns: 1 if argument is zero, 0 if not
 */
@@ -51,6 +51,7 @@ static int	arg_is_zero(char *argv)
 
 /*	arg_is_duplicate:
 	checks if the argument list has duplicated numbers
+	(including added positive signs)
 	Returns: 1 if a duplicate is found, 0 if not
 */
 static int	arg_is_duplicate(char **argv)
@@ -64,7 +65,7 @@ static int	arg_is_duplicate(char **argv)
 		j = 1;
 		while (argv[j])
 		{
-			if (j != i && ft_strcmp(argv[i], argv[j]) == 0)
+			if (j != i && num_cmp(argv[i], argv[j]) == 0)
 				return (1);
 			j++;
 		}
@@ -86,6 +87,8 @@ int	correct_input(char **argv)
 	i = 1;
 	while (argv[i])
 	{
+		if (ft_atoi(argv[i]) < INT_MIN || ft_atoi(argv[i]) > INT_MAX)
+			return (0);
 		if (!arg_is_number(argv[i]))
 			return (0);
 		zeroes += arg_is_zero(argv[i]);

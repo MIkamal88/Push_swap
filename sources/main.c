@@ -65,12 +65,15 @@ int	main(int argc, char **argv)
 	t_pushswap	*ps;
 	int			i;
 
-	i = 0;
+	i = 1;
 	if (argc < 2)
 		return (0);
-	while (argv[i++] && i != argc - 1)
-		if (argv[i] == 0)
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
 			exit_err("Error\n");
+		i++;
+	}
 	if (!correct_input(argv))
 		exit_err("Error\n");
 	ps = init_pushswap(argc, argv);

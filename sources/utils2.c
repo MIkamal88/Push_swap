@@ -28,11 +28,11 @@ void	ft_putstr(char *s)
 		write(1, s, ft_strlen(s));
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int		i;
+	int		sign;
+	long	res;
 
 	i = 0;
 	sign = 1;

@@ -47,9 +47,10 @@ int		ft_is_sign(char c);
 size_t	ft_strlen(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
+int		num_cmp(char *s1, char *s2);
 char	*modded_strjoin(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 char	*ft_strdup(const char *s);
 void	ft_putstr(char *s);
 
